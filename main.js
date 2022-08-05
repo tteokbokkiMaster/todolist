@@ -8,15 +8,21 @@
 
 // 진행중 끝남 탭을 누르면, 언더바가 이동한다
 // 끝남탭은 -> 끝난아이템, 진행중탭은 ->진행중인아이템만
-
-let taskInput = document.getElementById("task-input");
-let addButton = document.getElementById("add-button");
+let taskInput = document.querySelector(".task-input");
+let addButton = document.querySelector(".add-button");
 let tabs = document.querySelectorAll(".task-tabs div");
+let underLine = document.getElementById("under-line");
 let taskList = [];
 let filterList = [];
 let mode = "all";
 
-addButton.addEventListener("click", addTask);
+addButton.addEventListener("mousedown", addTask);
+
+taskInput.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        addTask(event);
+    }
+});
 
 for(i=1; i<tabs.length; i++){
     tabs[i].addEventListener("click", function(event){filter(event)})
@@ -30,7 +36,7 @@ function addTask(){
     };
 
     taskList.push(task)
-    console.log(taskList)
+    
     render();
 }
 
@@ -94,7 +100,13 @@ function deleteTask(id){
 }
 
 function filter(event){
-    mode = event.target.id;
+    if(event){
+        mode = event.target.id;
+        underLine.style.left = event.target.offsetLeft + 'px'
+        underLine.style.top = event.target.offsetTop + (event.target.offsetHeight-4) + 'px'
+        underLine.style.width = event.target.offsetWidth + 'px'
+    }
+    
 
     if(mode == "all" ){
         render()

@@ -12,6 +12,7 @@ body{
 }
 .task-area{
     border: 1px solid lightgray;
+    margin-top: 1em;
 }
 
 .task-tabs{
@@ -24,13 +25,30 @@ body{
     padding: 1em;
 }
 
+.task-input {
+    transition: padding-top 0.2s ease, margin-top 0.2s ease;
+    width: 85%;
+    border: none;
+    border: 1px solid lightgray;
+}
+
+.task-input:focus {
+    outline: none;
+    border-bottom: 3px solid blanchedalmond;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    transition: 0.5s;
+    padding-top: 35px;
+}
+
 #under-line{
     height: 4px;
-    background-color: blueviolet;
+    background-color: blanchedalmond;
     position: absolute;
-    width: 64px;
+    width:64px;
     left:0px;
-    top:50px;
+    top:52px;
     padding: 0px;
 }
 
